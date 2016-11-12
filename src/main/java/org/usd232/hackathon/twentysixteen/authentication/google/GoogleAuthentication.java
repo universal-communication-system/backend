@@ -16,6 +16,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.usd232.hackathon.twentysixteen.ModuleFactory;
 import org.usd232.hackathon.twentysixteen.authentication.IAuthenticationService;
 import org.usd232.hackathon.twentysixteen.authentication.UserInfo;
 
@@ -97,6 +98,7 @@ public class GoogleAuthentication implements IAuthenticationService {
 				}
 				AccessResponse access = GSON.fromJson(builder.toString(), AccessResponse.class);
 				UserInfo info = new UserInfo(access.id, access.name);
+				ModuleFactory.DATABASE_CONNECTION.afterLogin(info);
 				String token = generateToken();
 				USER_CACHE.put(token, info);
 				return token;

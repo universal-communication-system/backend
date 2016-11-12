@@ -39,7 +39,9 @@ public interface IAuthenticationService {
 	/**
 	 * Gets the uri the user should be redirected to in order to log in
 	 * 
+	 * @param domain
+	 *            The domain name the client connected to
 	 * @return The uri
 	 */
-	public String getLoginUri();
+	public String getLoginUri(String domain);
 }

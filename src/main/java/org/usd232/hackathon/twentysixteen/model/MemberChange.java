@@ -18,7 +18,7 @@ public class MemberChange
         this.removeUsers = removeUsers;
     }
 
-    List<String> getAddUsers()
+    public List<String> getAddUsers()
     {
         return addUsers;
     }

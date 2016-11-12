@@ -8,6 +8,10 @@ public class Capabilities {
 	private boolean chatCreatable;
 	private boolean chatDeletable;
 	private boolean messageDeletable;
+	private boolean directMessages;
+	private boolean groupMessages;
+	private boolean publicMessages;
+	private boolean objectMessages;
 
 	public boolean isMembersModifiable() {
 		return membersModifiable;
@@ -63,5 +67,37 @@ public class Capabilities {
 
 	public void setMessageDeletable(boolean messageDeletable) {
 		this.messageDeletable = messageDeletable;
+	}
+
+	public boolean isDirectMessages() {
+		return directMessages;
+	}
+
+	public void setDirectMessages(boolean directMessages) {
+		this.directMessages = directMessages;
+	}
+
+	public boolean isGroupMessages() {
+		return groupMessages;
+	}
+
+	public void setGroupMessages(boolean groupMessages) {
+		this.groupMessages = groupMessages;
+	}
+
+	public boolean isPublicMessages() {
+		return publicMessages;
+	}
+
+	public void setPublicMessages(boolean publicMessages) {
+		this.publicMessages = publicMessages;
+	}
+
+	public boolean isObjectMessages() {
+		return objectMessages;
+	}
+
+	public void setObjectMessages(boolean objectMessages) {
+		this.objectMessages = objectMessages;
 	}
 }

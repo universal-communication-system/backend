@@ -1,7 +1,6 @@
 package org.usd232.hackathon.twentysixteen.model;
 
 import java.util.List;
-import org.eclipse.jetty.server.Authentication.User;
 
 public class NewChat
 {

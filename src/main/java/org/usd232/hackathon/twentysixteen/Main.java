@@ -8,7 +8,9 @@ import org.usd232.hackathon.twentysixteen.authentication.UserInfo;
 import org.usd232.hackathon.twentysixteen.database.IDatabaseConnection;
 import org.usd232.hackathon.twentysixteen.model.Account;
 import org.usd232.hackathon.twentysixteen.model.AuthStatus;
+import org.usd232.hackathon.twentysixteen.model.Capabilities;
 import org.usd232.hackathon.twentysixteen.model.Chat;
+import org.usd232.hackathon.twentysixteen.model.MemberChange;
 import org.usd232.hackathon.twentysixteen.model.NewChat;
 import org.usd232.hackathon.twentysixteen.providers.IMessageProvider;
 import com.google.gson.Gson;
@@ -210,6 +212,41 @@ public class Main
                 success = false;
             }
             return success;
+        });
+        put("/accounts/GUID/chats/GUID/messages/GUID", (req, res)->
+        {
+            UserInfo user = auth.getInfo(req.attribute("X-Auth-Token").toString());
+            String[] urlSections = req.url().split("/");
+            boolean succeeded = true;
+            try
+            {
+                message.editMessage(user, UUID.fromString(urlSections[1]), UUID.fromString(urlSections[3]), UUID.fromString(urlSections[3]), req.body());
+            }
+            catch (Exception e)
+            {
+                succeeded = false;
+            }
+            return succeeded;
+        });
+        post("/accounts/GUID/chats/GUID", (req, res)->
+        {
+            UserInfo user = auth.getInfo(req.attribute("X-Auth-Token").toString());
+            String[] urlSections = req.url().split("/");
+            MemberChange members = GSON.fromJson(req.body(), MemberChange.class);
+            boolean succeeded = true;
+            try
+            {
+                message.modifyMembers(user, UUID.fromString(urlSections[1]), UUID.fromString(urlSections[3]), members);
+            }
+            catch (Exception e)
+            {
+                succeeded = false;
+            }
+            return succeeded;
+        });
+        get("provider/name", (req, res)->{
+            Capabilities caps = GSON.fromJson(req.body(), Capabilities.class);
+            return caps;
         });
     }
 }

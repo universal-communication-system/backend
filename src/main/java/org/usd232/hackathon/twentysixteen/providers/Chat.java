@@ -1,4 +1,4 @@
-package org.usd232.hackathon.twentysixteen.authentication;
+package org.usd232.hackathon.twentysixteen.providers;
 
 import java.util.UUID;
 

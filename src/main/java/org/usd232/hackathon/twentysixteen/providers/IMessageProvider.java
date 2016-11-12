@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import org.apache.logging.log4j.message.Message;
 import org.usd232.hackathon.twentysixteen.authentication.UserInfo;
-import org.usd232.hackathon.twentysixteen.model.Account;
 import org.usd232.hackathon.twentysixteen.model.Capabilities;
 import org.usd232.hackathon.twentysixteen.model.Chat;
 import org.usd232.hackathon.twentysixteen.model.MemberChange;
@@ -21,13 +20,9 @@ public interface IMessageProvider {
 
 	public void unreact(UserInfo user, UUID account, UUID chat, UUID message, String reaction);
 
-	public List<Account> getAccounts(UserInfo user);
-
 	public List<Chat> getChats(UserInfo user, UUID account);
 
 	public List<Message> getMessages(UserInfo user, UUID account, UUID chat);
-
-	public Account getAccount(UserInfo user, UUID account);
 
 	public Chat getChat(UserInfo user, UUID account, UUID chat);
 

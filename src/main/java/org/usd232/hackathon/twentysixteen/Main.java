@@ -42,5 +42,25 @@ public class Main
            json += "]}";
            return json;
         });
+        get("/accounts/GUID/chats/GUID", (req, res)->{
+            //TODO Fix req.* stuff
+           String json = "{\"type\":\"" + req.ACCOUNT.GUID.CHATS.GUID.TYPE + "\",\"name\":\"" + req.ACCOUNT.CHATS.GUID.GUID.NAME + "\"";
+           json += ",\"messages\":[";
+           for(int i = 0; i < req.ACCOUNT.GUID.CHATS.length; i++){
+               json += "{\"type:\"" + req.ACCOUNT.GUID.CHATS.GUID[i].SENDER + "\"name:\"" + req.ACCOUNT.GUID.CHATS.GUID[i].MESSAGE + "\"id:\"" + req.ACCOUNT.GUID.CHATS.GUID[i].GUID + "\"time:" + req.ACCOUNT.GUID.CHATS.GUID[i].TIME + "\",";
+               json += "\"reactions\":";
+               for(int j = 0; j <  req.ACCOUNT.GUID.CHATS.GUID[i].REACTIONS.length; i++){
+                   json += "{\"" + req.ACCOUNT.GUID.CHATS.GUID[i].REACTIONS[j].REACTION + "\":[";
+                   for(int k = 0; k < req.ACCOUNT.GUID.CHATS.GUID[i].REACTIONS[j].USERS; i++){
+                       json += "\"" + req.ACCOUNT.GUID.CHATS.GUID[i].REACTIONS[j].USERS[k] + "\",";
+                   }
+                   json = json.substring(0, json.length() - 2);
+                   json += "]";
+               }
+           }
+           json = json.substring(0, json.length() - 2);
+           json += "]}";
+           return json;
+        });
     }
 }

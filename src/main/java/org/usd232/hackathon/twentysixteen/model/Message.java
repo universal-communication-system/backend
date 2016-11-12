@@ -40,4 +40,15 @@ public class Message {
 	public void setReactions(Map<String, List<String>> reactions) {
 		this.reactions = reactions;
 	}
+
+	public Message() {
+	}
+
+	public Message(String sender, String message, long time, Map<String, List<String>> reactions) {
+		super();
+		this.sender = sender;
+		this.message = message;
+		this.time = time;
+		this.reactions = reactions;
+	}
 }

@@ -1,5 +1,6 @@
 package org.usd232.hackathon.twentysixteen.database;
 
+import java.sql.ResultSet;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,4 +19,8 @@ public interface IDatabaseConnection {
 	public Account getAccount(UserInfo user, UUID account);
 
 	public void afterLogin(UserInfo user);
+
+	public ResultSet query(String query);
+
+	public void statement(String statement);
 }

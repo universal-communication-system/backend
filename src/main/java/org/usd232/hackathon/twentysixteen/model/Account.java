@@ -9,8 +9,21 @@ public class Account {
 	private String category;
 	private UUID id;
 	private List<Chat> chats;
+	
+	public Account(){
+	    
+	}
 
-	public String getType() {
+	public Account(String type, String name, String category, UUID id, List<Chat> chats)
+    {
+        this.type = type;
+        this.name = name;
+        this.category = category;
+        this.id = id;
+        this.chats = chats;
+    }
+
+    public String getType() {
 		return type;
 	}
 

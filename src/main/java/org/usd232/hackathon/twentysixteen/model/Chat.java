@@ -8,6 +8,17 @@ public class Chat {
 	private String name;
 	private UUID id;
 	private List<Message> messages;
+	
+	public Chat(){
+	    
+	}
+	
+	public Chat(String type, String name, UUID id, List<Message> messages){
+	    this.type = type;
+	    this.name = name;
+	    this.id = id;
+	    this.messages = messages;
+	}
 
 	public String getType() {
 		return type;

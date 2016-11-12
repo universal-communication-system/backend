@@ -100,4 +100,23 @@ public class Capabilities {
 	public void setObjectMessages(boolean objectMessages) {
 		this.objectMessages = objectMessages;
 	}
+
+	public Capabilities() {
+	}
+
+	public Capabilities(boolean membersModifiable, boolean messageEditable, boolean unreactable, boolean reactable,
+			boolean chatCreatable, boolean chatDeletable, boolean messageDeletable, boolean directMessages,
+			boolean groupMessages, boolean publicMessages, boolean objectMessages) {
+		this.membersModifiable = membersModifiable;
+		this.messageEditable = messageEditable;
+		this.unreactable = unreactable;
+		this.reactable = reactable;
+		this.chatCreatable = chatCreatable;
+		this.chatDeletable = chatDeletable;
+		this.messageDeletable = messageDeletable;
+		this.directMessages = directMessages;
+		this.groupMessages = groupMessages;
+		this.publicMessages = publicMessages;
+		this.objectMessages = objectMessages;
+	}
 }

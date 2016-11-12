@@ -3,11 +3,11 @@ package org.usd232.hackathon.twentysixteen.providers;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.logging.log4j.message.Message;
 import org.usd232.hackathon.twentysixteen.authentication.UserInfo;
 import org.usd232.hackathon.twentysixteen.model.Capabilities;
 import org.usd232.hackathon.twentysixteen.model.Chat;
 import org.usd232.hackathon.twentysixteen.model.MemberChange;
+import org.usd232.hackathon.twentysixteen.model.Message;
 
 public interface IMessageProvider {
 	public UUID registerAccount(UserInfo user, String token);

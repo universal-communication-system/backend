@@ -21,20 +21,27 @@ namespace backend {
 		}
 
 		public static void OnReceived(byte[] buf, int off, int len) {
-			using ( Process proc = Process.Start(Psi) ) {
-				proc.StandardInput.BaseStream.Write(buf, off, len);
-				proc.StandardInput.Close();
-				proc.WaitForExit();
-				byte[] output;
-				using ( MemoryStream buffer = new MemoryStream() ) {
-					proc.StandardOutput.BaseStream.CopyTo(buffer);
-					output = buffer.ToArray();
+			if ( len > 0 ) {
+				using ( Process proc = Process.Start(Psi) ) {
+					proc.StandardInput.BaseStream.Write(buf, off, len);
+					proc.StandardInput.Close();
+					proc.WaitForExit();
+					byte[] output;
+					using ( MemoryStream buffer = new MemoryStream() ) {
+						proc.StandardOutput.BaseStream.CopyTo(buffer);
+						output = buffer.ToArray();
+					}
+					foreach ( ClientHandler client in Clients.ToArray() ) {
+						try {
+							client.Stream.Write(output, 0, output.Length);
+						} catch ( Exception ex ) {
+							Console.Error.WriteLine(ex);
+							Clients.Remove(client);
+						}
+					}
 				}
-				foreach ( ClientHandler client in Clients ) {
-					client.Stream.Write(output, 0, output.Length);
-				}
+				Console.OpenStandardOutput().Write(buf, off, len);
 			}
-			Console.OpenStandardOutput().Write(buf, off, len);
 		}
 	}
 }
